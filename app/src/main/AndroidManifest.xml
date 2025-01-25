@@ -1,0 +1,31 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    
+    <application
+        android:name=".ExpenseTrackerApp"
+        ... >
+        
+        <activity
+            android:name=".MainActivity"
+            ... >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".service.NotificationService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- Add your Google Web Client ID here -->
+        <meta-data
+            android:name="com.google.android.gms.auth.CLIENT_ID"
+            android:value="your_web_client_id_here"/>
+    </application>
+</manifest> 
